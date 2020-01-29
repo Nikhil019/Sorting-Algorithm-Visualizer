@@ -214,35 +214,3 @@ def quick_sort(nums):  # n^2
     _quick_sort(nums, 0, nums.get_len() - 1)
     
     
-    def count_sort(arr): 
-        # The output character array that will have sorted arr 
-        output = [0 for i in range(256)] 
-  
-        # Create a count array to store count of inidividul 
-        # characters and initialize count array as 0 
-        count = [0 for i in range(256)] 
-  
-        # For storing the resulting answer since the  
-        # string is immutable 
-        ans = ["" for _ in arr] 
-  
-        # Store count of each character 
-        for i in arr: 
-            count[ord(i)] += 1
-  
-        # Change count[i] so that count[i] now contains actual 
-        # position of this character in output array 
-        for i in range(256): 
-            count[i] += count[i-1] 
-  
-        # Build the output character array 
-        for i in range(arr.get_len()): 
-            output[count[ord(arr[i])]-1] = arr[i] 
-            count[ord(arr[i])] -= 1
-  
-        # Copy the output array to arr, so that arr now 
-        # contains sorted characters 
-        for i in range(arr.get_len()): 
-            ans[i] = output[i] 
-        return ans
-    
